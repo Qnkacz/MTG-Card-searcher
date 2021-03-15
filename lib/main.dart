@@ -159,7 +159,7 @@ class _CardState extends State<CardBody> {
                         //API_Manager.getData(textController).then((value) => setState(()=>cardList=value)),
                         API_Manager.getData(textController.text).then((value) => setState(()=>cardList=value),onError: (e){
                           noCardFoundSnackBar();
-                        }),
+                        }).then((value) => print(cardList.length)),
                       },
                       controller: textController,
                       textAlign: TextAlign.center,

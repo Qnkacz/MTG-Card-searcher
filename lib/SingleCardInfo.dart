@@ -84,17 +84,7 @@ class _SingleCardInfoState extends State<SingleCardInfo> {
   }
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-        key: Key(card.name),
-        dismissThresholds:
-        {
-          DismissDirection.endToStart:.5,
-          DismissDirection.startToEnd:.5,
-        },
-        background: buildSwipeActionLeft(),
-        secondaryBackground: buildSwipeActionRight(),
-        child: GestureDetector(
-
-        ));
+    print(card.name);
+    return Container(color: Colors.blue,);
   }
 }
