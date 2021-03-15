@@ -143,6 +143,7 @@ class _cardListFromUrlState extends State<cardListFromUrl> {
 
          break;
        case DismissDirection.startToEnd:
+         print("saving");
          setState((){
            savedCardList.add(cardList[index]);
            cardList.removeAt(index);
@@ -210,6 +211,7 @@ class _cardListFromUrlState extends State<cardListFromUrl> {
                   },
                   background: buildSwipeActionLeft(),
                   secondaryBackground: buildSwipeActionRight(),
+                  onDismissed: (direction)=>dismissItem(context,index,direction),
                   child: GestureDetector(
                     child: Card(
                       child: Row(
