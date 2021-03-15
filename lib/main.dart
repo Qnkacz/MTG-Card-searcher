@@ -326,12 +326,12 @@ class _cardListState extends State<cardListM> {
                                   fontStyle: FontStyle.italic
                               ),
                             )
-<<<<<<< HEAD
+
 
                           ],
-=======
 
-                          ],
+
+
                         )
                       ],
                     ),
@@ -451,13 +451,11 @@ class _cardListSState extends State<cardListS> {
                           radius: 40,
                           backgroundImage: NetworkImage(_CardState.savedCardList[index].artURL),
                           backgroundColor: Colors.amber,
->>>>>>> parent of 6ff066f (working making it more modular)
                         )
                       ],
                     ),
                   ),
                   Expanded(
-<<<<<<< HEAD
                     flex: 10,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -607,7 +605,7 @@ class _cardListSState extends State<cardListS> {
                               ),
                             )
 
-=======
+
                     flex: 30,
                     child: Column(
                       children: [
@@ -638,7 +636,6 @@ class _cardListSState extends State<cardListS> {
                               ),
                             )
 
->>>>>>> parent of 6ff066f (working making it more modular)
                           ],
                         )
                       ],
