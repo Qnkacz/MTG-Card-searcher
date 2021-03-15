@@ -326,6 +326,10 @@ class _cardListState extends State<cardListM> {
                                   fontStyle: FontStyle.italic
                               ),
                             )
+<<<<<<< HEAD
+
+                          ],
+=======
 
                           ],
                         )
@@ -333,6 +337,127 @@ class _cardListState extends State<cardListM> {
                     ),
                   ),
                   Expanded(
+                    flex: 10,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.attach_money),
+                            Text(_CardState.cardList[index].USPrice.toString())
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.euro),
+                            Text(_CardState.cardList[index].EURPrice.toString())
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.attach_money,color: Colors.indigo,),
+                            Text(_CardState.cardList[index].foil_USPrice.toString(),style: TextStyle(color: Colors.indigo),)
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.euro,color: Colors.indigo,),
+                            Text(_CardState.cardList[index].foil_EURPrice.toString(),style: TextStyle(color: Colors.indigo),)
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                      flex: 20,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          MaterialButton(child: Text('TCG'),onPressed:()=>GoShopping(_CardState.savedCardList[index],CardInfo.tcg)),
+                          MaterialButton(child: Text('MARKET'),onPressed:()=>GoShopping(_CardState.savedCardList[index],CardInfo.cardmarket)),
+                          MaterialButton(child: Text('HOARDER'),onPressed:()=>GoShopping(_CardState.savedCardList[index],CardInfo.cardhoarder))
+                        ],
+                      )
+                  )
+                ],
+              ),
+            ),
+            color: Colors.white70,
+          ),
+        ),
+      );
+    },
+      itemCount: _CardState.cardList.length,
+    );
+  }
+}
+
+class cardListS extends StatefulWidget {
+  @override
+  _cardListSState createState() => _cardListSState();
+}
+
+class _cardListSState extends State<cardListS> {
+  void dismissItem(BuildContext context, int index, DismissDirection direction) {
+
+    switch(direction){
+      case DismissDirection.endToStart:
+        print("deleting");
+        setState((){
+          _CardState.savedCardList.removeAt(index);
+          String json = jsonEncode(_CardState.savedCardList);
+          //todo new system,
+          FileUtils.writeToFile(json);
+        });
+        break;
+    }
+  }
+   GoShopping(MTGcard card,String shopName)  {
+      if(shopName == CardInfo.tcg){
+        Utilities.LaunchInBrowser(card.tcg);
+      }
+      if(shopName == CardInfo.cardmarket){
+        Utilities.LaunchInBrowser(card.market);
+      }
+      if(shopName == CardInfo.cardhoarder){
+        Utilities.LaunchInBrowser(card.hoarder);
+      }
+  }
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(itemBuilder: (context,index){
+      final item = _CardState.savedCardList[index];
+      return Dismissible(
+        key: Key(item.name),
+        background: _CardState.buildSwipeActionLeft_saved(),
+        direction: DismissDirection.endToStart,
+        onDismissed: (direction)=>dismissItem(context,index,direction),
+        child: GestureDetector(
+          onDoubleTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (_){
+              return CardDetail(_CardState.savedCardList[index],_CardState.savedCardList);
+            }));
+          },
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 10,
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 40,
+                          backgroundImage: NetworkImage(_CardState.savedCardList[index].artURL),
+                          backgroundColor: Colors.amber,
+>>>>>>> parent of 6ff066f (working making it more modular)
+                        )
+                      ],
+                    ),
+                  ),
+                  Expanded(
+<<<<<<< HEAD
                     flex: 10,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -482,6 +607,38 @@ class _cardListSState extends State<cardListS> {
                               ),
                             )
 
+=======
+                    flex: 30,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                _CardState.savedCardList[index].name,
+                                overflow: TextOverflow.fade,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.bold
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              _CardState.savedCardList[index].artist,
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontStyle: FontStyle.italic
+                              ),
+                            )
+
+>>>>>>> parent of 6ff066f (working making it more modular)
                           ],
                         )
                       ],
