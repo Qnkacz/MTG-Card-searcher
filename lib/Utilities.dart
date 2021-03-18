@@ -1,4 +1,8 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'Card.dart';
 class Utilities{
 static String fuzzySearch = "https://api.scryfall.com/cards/named?fuzzy=";
 static String search = "https://api.scryfall.com/cards/search?q=";
@@ -17,6 +21,11 @@ static Future<void> LaunchInBrowser(String url) async {
     throw 'Could not launch $url';
   }
 }
+static TabController tabController;
+
+
+static List<MTGcard> cardList= <MTGcard>[];
+static List<MTGcard> savedCardList = <MTGcard>[];
 }
 class CardInfo{
   static String cardName = "name";
